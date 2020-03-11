@@ -10,16 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_153045) do
+ActiveRecord::Schema.define(version: 2020_03_11_160057) do
 
   create_table "movies", force: :cascade do |t|
     t.string "name"
-    t.integer "theater_id"
-    t.integer "viewer_id"
   end
 
   create_table "theaters", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "viewer_id"
   end
 
   create_table "viewers", force: :cascade do |t|
