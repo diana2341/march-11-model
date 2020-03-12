@@ -1,7 +1,6 @@
 class Viewer < ActiveRecord::Base
     has_many :tickets
     has_many :movies, through: :tickets
-    has_many :theaters, through: :movies
 
     def self.viewers_who_are_girls
         self.all.select do |viewer|
@@ -13,5 +12,8 @@ class Viewer < ActiveRecord::Base
                 person.age == 20
             end
          end
+    def what_movie
+        self.movies.uniq
+    end
 
 end

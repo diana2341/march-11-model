@@ -4,14 +4,35 @@ class Theater < ActiveRecord::Base
     has_many :viewers, through: :tickets
 
 
-    def self.name_of_theater
-        self.all.map do |theater|
-            theater.name
+    def name_of_theater
+        self.name
+         #returns the name of each theater
+    end
+
+    def locations_of_theater
+        self.location
+    
+    end#gives us the location of the theater
+
+    def num_movies_of_theater
+        self.movies.count
+     end
+     #gives us how many movies a theater has
+
+
+
+     def self.list_movies
+                
+       self.all.map do |theater|
+        theater.movies.map do |movie|
+            movie.name
         end
-        end
-        def self.locations_of_theater
-            self.all.find do |location|
-                 location.location == "brentwood"
-            end
-            end
+       end
+    end#gives us all the movies a theater would have
+
+  
+
+     
+   
+    
 end
